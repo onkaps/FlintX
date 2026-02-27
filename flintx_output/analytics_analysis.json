@@ -1,0 +1,152 @@
+{
+  "file": "demo_project/analytics.py",
+  "loops": [
+    {
+      "line": 27,
+      "loop_depth": 2,
+      "flagged_nested": true,
+      "expensive_calls_inside": []
+    },
+    {
+      "line": 30,
+      "loop_depth": 3,
+      "flagged_nested": true,
+      "expensive_calls_inside": []
+    },
+    {
+      "line": 57,
+      "loop_depth": 2,
+      "flagged_nested": true,
+      "expensive_calls_inside": []
+    },
+    {
+      "line": 78,
+      "loop_depth": 2,
+      "flagged_nested": true,
+      "expensive_calls_inside": [
+        "math.sqrt",
+        "sum"
+      ]
+    },
+    {
+      "line": 99,
+      "loop_depth": 2,
+      "flagged_nested": true,
+      "expensive_calls_inside": []
+    }
+  ],
+  "recursion": [],
+  "complexity": [
+    {
+      "function": "compute_similarity_matrix",
+      "line": 17,
+      "complexity": 6,
+      "length_lines": 28,
+      "flagged_complexity": false,
+      "flagged_length": false
+    },
+    {
+      "function": "normalize_dataset",
+      "line": 48,
+      "complexity": 4,
+      "length_lines": 19,
+      "flagged_complexity": false,
+      "flagged_length": false
+    },
+    {
+      "function": "score_all_pairs",
+      "line": 70,
+      "complexity": 3,
+      "length_lines": 16,
+      "flagged_complexity": false,
+      "flagged_length": false
+    },
+    {
+      "function": "apply_activation",
+      "line": 89,
+      "complexity": 4,
+      "length_lines": 18,
+      "flagged_complexity": false,
+      "flagged_length": false
+    },
+    {
+      "function": "compute_statistics",
+      "line": 110,
+      "complexity": 2,
+      "length_lines": 18,
+      "flagged_complexity": false,
+      "flagged_length": false
+    }
+  ],
+  "data_parallel_patterns": [
+    {
+      "function": "compute_similarity_matrix",
+      "line": 25,
+      "pattern": "element_wise_loop",
+      "description": "Nested loop with append \u2014 data-parallel candidate (vectorization / GPU)"
+    },
+    {
+      "function": "compute_similarity_matrix",
+      "line": 27,
+      "pattern": "element_wise_loop",
+      "description": "Nested loop with append \u2014 data-parallel candidate (vectorization / GPU)"
+    },
+    {
+      "function": "compute_similarity_matrix",
+      "line": 30,
+      "pattern": "reduction_loop",
+      "description": "Manual accumulation loop \u2014 candidate for numpy reduction or parallel reduce"
+    },
+    {
+      "function": "normalize_dataset",
+      "line": 55,
+      "pattern": "element_wise_loop",
+      "description": "Nested loop with append \u2014 data-parallel candidate (vectorization / GPU)"
+    },
+    {
+      "function": "normalize_dataset",
+      "line": 57,
+      "pattern": "reduction_loop",
+      "description": "Manual accumulation loop \u2014 candidate for numpy reduction or parallel reduce"
+    },
+    {
+      "function": "score_all_pairs",
+      "line": 77,
+      "pattern": "element_wise_loop",
+      "description": "Nested loop with append \u2014 data-parallel candidate (vectorization / GPU)"
+    },
+    {
+      "function": "score_all_pairs",
+      "line": 78,
+      "pattern": "map_pattern",
+      "description": "Loop with append \u2014 candidate for list comprehension, map(), or vectorization"
+    },
+    {
+      "function": "apply_activation",
+      "line": 97,
+      "pattern": "element_wise_loop",
+      "description": "Nested loop with append \u2014 data-parallel candidate (vectorization / GPU)"
+    },
+    {
+      "function": "apply_activation",
+      "line": 99,
+      "pattern": "map_pattern",
+      "description": "Loop with append \u2014 candidate for list comprehension, map(), or vectorization"
+    },
+    {
+      "function": "compute_statistics",
+      "line": 121,
+      "pattern": "reduction_loop",
+      "description": "Manual accumulation loop \u2014 candidate for numpy reduction or parallel reduce"
+    }
+  ],
+  "summary": {
+    "has_nested_loops": true,
+    "has_expensive_calls_in_loops": true,
+    "has_recursion": false,
+    "has_high_complexity": false,
+    "has_data_parallel_patterns": true,
+    "gpu_offload_candidate": true,
+    "cpu_bound_indicator": true
+  }
+}
